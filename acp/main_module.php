@@ -51,7 +51,7 @@ class main_module
 			{
 				$files[] = $file;
 			}
-			$files = array_diff($files, array('.', '..'));
+			$files = array_diff($files, array('.', '..', 'index.htm'));
 		}
 
 		$new_icon_select = '<option value="spacer.gif">' . $user->lang['SELECT'] . '</option>';
