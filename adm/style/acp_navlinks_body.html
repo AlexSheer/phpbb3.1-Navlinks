@@ -1,0 +1,126 @@
+<!-- INCLUDE overall_header.html -->
+	<script type="text/javascript" defer="defer">
+	// <![CDATA[
+		function update_image(newimage, id)
+		{
+			document.getElementById(id).src = (newimage) ? '../ext/Sheer/navlinks/images/' + encodeURI(newimage) : '';
+		}
+	// ]]>
+	</script>
+	<script type="text/javascript">
+	// <![CDATA[
+		/**
+		* Handle displaying/hiding the dimension fields
+		*/
+		function display_options(value)
+		{
+			if (value == 0)
+			{
+				dE('img_dimensions', -1);
+			}
+			else
+			{
+				dE('img_dimensions', 1);
+			}
+		}
+
+		/**
+		* Init the wanted display functionality if javascript is enabled.
+		* If javascript is not available, the user is still able to properly administer.
+		*/
+		onload = function()
+		{
+			<!-- IF not IMAGE_SIZE -->
+				dE('img_dimensions', -1);
+			<!-- ENDIF -->
+		}
+	// ]]>
+	</script>
+<a name="maincontent"></a>
+
+<h1>{L_ACP_NAV_LINKS}</h1>
+<p>{L_ACP_NAV_LINKS_EXPLAIN}</p>
+<!-- IF ERROR -->
+<div style="background:#BC2A4D; padding:5px; font-weight:bold; color:#FFF; margin:10px 0px"><p>{ERROR}</p></div>
+<!-- ENDIF -->
+<form id="list" method="post" action="{U_ACTION}">
+<!-- IF .links -->
+	<table cellspacing="1">
+	<col class="row1" /><col class="row1" /><col class="row1" /><col class="row1" /><col class="row1" /><col class="row1" /><col class="row2" /><col class="row2" />
+	<tbody>
+		<tr>
+			<th>ID</th>
+			<th>{L_LINK_ACTIVE}</th>
+			<th>{L_LINK_NAME}</th>
+			<th>{L_LINK_URL}</th>
+			<th>{L_LINK_ICON_FILENAME}</th>
+			<th>{L_LINK_ICON}</th>
+			<th>&nbsp;</th>
+			<th>{L_MARK}</th>
+		</tr>
+	<!-- BEGIN links -->
+		<tr>
+			<td>{links.ID}</td>
+			<td><input name="enable[{links.ID}]" type="checkbox" value="{links.ID}" {links.S_ENABLE}></td>
+			<td><input name="links[{links.ID}]" type="text" size="40" value="{links.LINK}"></td>
+			<td><input name="urls[{links.ID}]" type="text" size="80" maxlength="255" value="{links.URL}"></td>
+			<td><select id="imgpath" name="icons[{links.ID}]" onchange="update_image(this.options[selectedIndex].value, {links.ID});">{links.S_IMAGES}</select></td>
+			<td style="text-align: center;"><img src="{links.ICON}" id="{links.ID}"></img></td>
+			<td class="actions">
+				<span class="up-disabled" style="display:none;">{ICON_MOVE_UP_DISABLED}</span>
+				<span class="up"><a href="{links.U_MOVE_UP}" data-ajax="row_up">{ICON_MOVE_UP}</a></span>
+				<span class="down-disabled" style="display:none;">{ICON_MOVE_DOWN_DISABLED}</span>
+				<span class="down"><a href="{links.U_MOVE_DOWN}" data-ajax="row_down">{ICON_MOVE_DOWN}</a></span>
+			</td>
+			<td style="text-align: center;"><input name="ids[]" type="checkbox" value="{links.ID}"></td>
+		</tr>
+	<!-- END links -->
+	</tbody>
+	</table>
+<fieldset class="quick">
+	<p class="small"><a href="#" onclick="marklist('list', 'ids', true); return false;">{L_MARK_ALL}</a> :: <a href="#" onclick="marklist('list', 'ids', false); return false;">{L_UNMARK_ALL}</a></p>
+		<input class="button2" name="delall" value="{L_DELETE_ALL}" type="submit">&nbsp;
+		<input class="button2" name="delmarked" value="{L_DELETE_MARKED}" type="submit">
+</fieldset>
+<fieldset>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</fieldset>
+<!-- ENDIF -->
+<fieldset>
+	<legend>{L_ADD}</legend>
+	<!-- IF S_ERROR -->
+		<div style="background:#BC2A4D; padding:5px; font-weight:bold; color:#FFF; margin:10px 0px"><p style="margin:0px">{S_ERROR}</p></div>
+		<!-- ENDIF -->
+	<dl>
+		<dt><label for="link_name">{L_LINK_NAME}</label></dt>
+		<dd><input id="link_name" size="40" maxlength="255" name="link_name" value="{LINK_NAME}" type="text"></dd>
+	</dl>
+	<dl>
+		<dt><label for="link_url">{L_LINK_URL}</label></dt>
+		<dd><input id="link_url" size="40" maxlength="255" name="link_url" value="{LINK_URL}" type="text"></dd>
+	</dl>
+	<dl>
+		<dt><label for="link_icon">{L_LINK_ICON_FILENAME}</label></dt>
+		<dd>
+			<select id="imgpath" name="link_icon" onchange="update_image(this.options[selectedIndex].value, 0);">{S_IMAGES}</select>&nbsp;
+			<img src="{ICON}" id="0"></img>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="link_active">{L_LINK_ACTIVE}:</label><br /></dt>
+		<dd>
+			<label><input type="radio" class="radio" id="link_active" name="link_active" value="1" checked="checked" /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="link_active" value="0" /> {L_NO}</label>
+		</dd>
+	</dl>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="add" name="add" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="cancel" name="cancel" value="{L_RESET}" />
+	</p>
+</fieldset>
+{S_FORM_TOKEN}
+</form>
+<!-- INCLUDE overall_footer.html -->
