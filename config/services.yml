@@ -1,0 +1,10 @@
+services:
+    Sheer.navlinks.listener:
+        class: Sheer\navlinks\event\listener
+        arguments:
+            - @template
+            - @dbal.conn
+            - %core.table_prefix%
+            - %core.root_path%
+        tags:
+            - { name: event.listener }
