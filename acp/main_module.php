@@ -102,11 +102,10 @@ class main_module
 							SET ' . $db->sql_build_array('UPDATE', $sql_data) . '
 							WHERE id = ' . $id;
 						$db->sql_query($sql);
-
-						meta_refresh(3, append_sid($this->u_action));
-						trigger_error($user->lang['UPDATE_SUCCESS']);
 					}
 				}
+				meta_refresh(3, append_sid($this->u_action));
+				trigger_error($user->lang['UPDATE_SUCCESS']);
 			}
 			else
 			{
