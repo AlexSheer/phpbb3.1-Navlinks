@@ -1,4 +1,8 @@
 .nav_links{
-	float: left;
+	position: absolute;
 	margin: -110px 0px 0px 440px;
+	word-break: break-all;
+	word-wrap: break-word;
+	max-width: 800px;
+	overflow: auto;
 }
