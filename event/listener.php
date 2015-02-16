@@ -7,7 +7,7 @@
 *
 */
 
-namespace Sheer\navlinks\event;
+namespace sheer\navlinks\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
