@@ -7,7 +7,7 @@
 *
 */
 
-namespace Sheer\navlinks\migrations;
+namespace sheer\navlinks\migrations;
 
 class version_0_0_1 extends \phpbb\db\migration\migration
 {
@@ -59,10 +59,10 @@ class version_0_0_1 extends \phpbb\db\migration\migration
 			// ACP
 			array('module.add', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_NAV_LINKS')),
 			array('module.add', array('acp', 'ACP_NAV_LINKS', array(
-				'module_basename'	=> '\Sheer\navlinks\acp\main_module',
+				'module_basename'	=> '\sheer\navlinks\acp\main_module',
 				'module_langname'	=> 'ACP_NAV_LINKS_MANAGE',
 				'module_mode'		=> 'manage',
-				'module_auth'		=> 'ext_Sheer/navlinks && acl_a_board && acl_a_manage_navlinks',
+				'module_auth'		=> 'ext_sheer/navlinks && acl_a_board && acl_a_manage_navlinks',
 			))),
 		);
 	}
