@@ -1,6 +1,6 @@
 services:
-    Sheer.navlinks.listener:
-        class: Sheer\navlinks\event\listener
+    sheer.navlinks.listener:
+        class: sheer\navlinks\event\listener
         arguments:
             - @template
             - @dbal.conn
