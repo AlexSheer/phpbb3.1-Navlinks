@@ -9,7 +9,7 @@
 
 // This file is needed for phpBB3 to properly register the extension
 
-namespace Sheer\navlinks;
+namespace sheer\navlinks;
 
 class ext extends \phpbb\extension\base
 {
