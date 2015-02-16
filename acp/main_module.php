@@ -7,7 +7,7 @@
 *
 */
 
-namespace Sheer\navlinks\acp;
+namespace sheer\navlinks\acp;
 
 class main_module
 {
@@ -26,7 +26,7 @@ class main_module
 		$link_id	= request_var('link_id', 0);
 
 		$ids		= request_var('ids', array(0));
-		$links		= request_var('links', array(''));
+		$links		= request_var('links', array(''), true);
 		$urls		= request_var('urls', array(''));
 		$icons		= request_var('icons', array(''));
 		$s_enable	= request_var('enable', array('' => 0));
@@ -42,7 +42,7 @@ class main_module
 		$this->page_title = $user->lang('ACP_NAV_LINKS');
 		$error = $_error = array();
 
-		$dir = "{$phpbb_root_path}ext/Sheer/navlinks/images";
+		$dir = "{$phpbb_root_path}ext/sheer/navlinks/images";
 		$dp = @opendir($dir);
 		if ($dp)
 		{
@@ -64,11 +64,11 @@ class main_module
 			}
 		}
 
-		add_form_key('Sheer/navlinks');
+		add_form_key('sheer/navlinks');
 
 		if ($request->is_set_post('submit'))
 		{
-			if (!check_form_key('Sheer/navlinks'))
+			if (!check_form_key('sheer/navlinks'))
 			{
 				trigger_error('FORM_INVALID');
 			}
@@ -184,7 +184,7 @@ class main_module
 				'URL'			=> $row['url'],
 				'ICON_FILENAME'	=> $row['icon'],
 				'S_ENABLE'		=> ($row['enable']) ? 'checked="checked"' : '',
-				'ICON'			=> '' . $phpbb_root_path . 'ext/Sheer/navlinks/images/' . $row['icon'] . '',
+				'ICON'			=> '' . $phpbb_root_path . 'ext/sheer/navlinks/images/' . $row['icon'] . '',
 				'S_IMAGES'		=> $icon_select,
 				'U_MOVE_UP'		=> $this->u_action . '&amp;action=move_up&amp;link_id=' . $row['id'] . '',
 				'U_MOVE_DOWN'	=> $this->u_action . '&amp;action=move_down&amp;link_id=' . $row['id'] . '',
@@ -249,7 +249,7 @@ class main_module
 			'S_ERROR'		=> (sizeof($_error)) ? implode('<br />', $_error) : '',
 			'S_IMAGES'		=> $new_icon_select,
 			'LINK_URL'		=> $link_url,
-			'ICON'			=> ($link_icon) ? '' . $phpbb_root_path . 'ext/Sheer/navlinks/images/' . $link_icon . '' : '' . $phpbb_root_path . 'images/spacer.gif',
+			'ICON'			=> ($link_icon) ? '' . $phpbb_root_path . 'ext/sheer/navlinks/images/' . $link_icon . '' : '' . $phpbb_root_path . 'images/spacer.gif',
 		));
 	}
 
