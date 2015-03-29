@@ -19,7 +19,7 @@
    "require-dev": {
       "phpbb/epv": "dev-master"
    },
-    "extra": : {
+    "extra": {
         "display-name": "Navlinks in Header",
         "soft-require": {
             "phpbb/phpbb": "3.1.*@dev"
