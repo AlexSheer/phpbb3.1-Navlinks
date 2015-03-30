@@ -22,21 +22,21 @@ class main_module
 
 		define ('NAV_LINKS_TABLE', $table_prefix.'nav_links');
 
-		$action		= request_var('action', '');
-		$link_id	= request_var('link_id', 0);
+		$action		= $request->variable('action', '');
+		$link_id	= $request->variable('link_id', 0);
 
-		$ids		= request_var('ids', array(0));
-		$links		= request_var('links', array(''), true);
-		$urls		= request_var('urls', array(''));
-		$icons		= request_var('icons', array(''));
-		$s_enable	= request_var('enable', array('' => 0));
+		$ids		= $request->variable('ids', array(0));
+		$links		= $request->variable('links', array(''), true);
+		$urls		= $request->variable('urls', array(''));
+		$icons		= $request->variable('icons', array(''));
+		$s_enable	= $request->variable('enable', array('' => 0));
 		$deletemark	= $request->variable('delmarked', false, false, \phpbb\request\request_interface::POST);
 		$deleteall	= $request->variable('delall', false, false, \phpbb\request\request_interface::POST);
 
-		$link_name	= request_var('link_name', '', true);
-		$link_url	= request_var('link_url', '');
-		$link_icon	= request_var('link_icon', '');
-		$link_active= request_var('link_active', true);
+		$link_name	= $request->variable('link_name', '', true);
+		$link_url	= $request->variable('link_url', '');
+		$link_icon	= $request->variable('link_icon', '');
+		$link_active= $request->variable('link_active', true);
 
 		$this->tpl_name = 'acp_navlinks_body';
 		$this->page_title = $user->lang('ACP_NAV_LINKS');
