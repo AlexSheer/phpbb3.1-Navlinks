@@ -2,9 +2,9 @@ services:
     sheer.navlinks.listener:
         class: sheer\navlinks\event\listener
         arguments:
-            - @template
-            - @dbal.conn
-            - %core.table_prefix%
-            - %core.root_path%
+            - '@template'
+            - '@dbal.conn'
+            - '%core.table_prefix%'
+            - '%core.root_path%'
         tags:
             - { name: event.listener }
