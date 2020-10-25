@@ -46,17 +46,17 @@
 <form id="list" method="post" action="{U_ACTION}">
 	<!-- IF .links -->
 	<fieldset class="tabulated">
-		<table class="table1 zebra-table">
+		<table class="table1 zebra-table fixed-width-table responsive">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>{L_LINK_ACTIVE}</th>
-				<th>{L_LINK_NAME}</th>
-				<th>{L_LINK_URL}</th>
-				<th>{L_LINK_ICON_FILENAME}</th>
-				<th>{L_LINK_ICON}</th>
-				<th>&nbsp;</th>
-				<th>{L_MARK}</th>
+				<th style="width: 5%;">ID</th>
+				<th style="width: 8%;">{L_LINK_ACTIVE}</th>
+				<th style="width: 15%;">{L_LINK_NAME}</th>
+				<th style="width: 40%;">{L_LINK_URL}</th>
+				<th style="width: 12%;">{L_LINK_ICON_FILENAME}</th>
+				<th style="width: 5%;">{L_LINK_ICON}</th>
+				<th style="width: 5%;">&nbsp;</th>
+				<th style="width: 7%;">{L_MARK}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -64,8 +64,8 @@
 			<tr>
 				<td>{links.ID}</td>
 				<td><input name="enable[{links.ID}]" type="checkbox" value="{links.ID}" {links.S_ENABLE}></td>
-				<td><input name="links[{links.ID}]" type="text" size="40" value="{links.LINK}"></td>
-				<td><input name="urls[{links.ID}]" type="text" size="80" maxlength="255" value="{links.URL}"></td>
+				<td><input name="links[{links.ID}]" type="text" value="{links.LINK}" style="width: 99%;"></td>
+				<td><input name="urls[{links.ID}]" type="text" maxlength="255" value="{links.URL}" style="width: 99%;"></td>
 				<td><select id="imgpath" name="icons[{links.ID}]" onchange="update_image(this.options[selectedIndex].value, {links.ID});">{links.S_IMAGES}</select></td>
 				<td style="text-align: center;"><img src="{links.ICON}" id="{links.ID}"></img></td>
 				<td class="actions">
